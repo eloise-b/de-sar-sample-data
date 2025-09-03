@@ -21,8 +21,10 @@ folium = ">=0.19.5,<0.20"
 botocore = ">=1.38.15,<2"
 matplotlib = ">=3.10.3,<4"
 scipy = ">=1.15.2,<2"
+geopandas = ">=1.1.1,<2"
 
 [pypi-dependencies]
+rustac = ">=0.8.1, <0.9"
 
 [feature.dev.dependencies]
 nbconvert = ">=7.16.6,<8"
