@@ -12,3 +12,7 @@ dependencies:
 - botocore >=1.38.15,<2
 - matplotlib >=3.10.3,<4
 - scipy >=1.15.2,<2
+- geopandas >=1.1.1,<2
+- pip
+- pip:
+  - rustac>=0.8.1, <0.9
