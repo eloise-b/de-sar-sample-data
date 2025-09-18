@@ -1,5 +1,6 @@
 # python
 __pycache__
+.ipynb_checkpoints
 
 # pixi environments
 .pixi

@@ -32,7 +32,7 @@ To view either file, you will first need to [clone the repository](#cloning-the-
 ## Set up
 
 ### Cloning the repository
-To access and run the iPython notebooks, you will need to clone this repository into your local computing environment, or the DE Dev Sandbox. 
+To access and run the iPython notebooks, you will need to clone this repository into your local computing environment, or the Digital Earth Australia Development or Production Sandbox. 
 
 In a terminal, navigate to where you wish to keep the repository and run
 ```
@@ -41,7 +41,9 @@ git clone https://github.com/caitlinadams/de-sar-sample-data.git
 
 ### Setting up the environment
 
-If using DE's Dev Sandbox, no environment set up is required.
+If using DEA's Development or Production Sandbox, no environment set up is required.
+You will just need to pip install the `de_sar_demo` module to gain access to speckle filters.
+In a terminal, navigate to the repository and run `pip install .`.
 
 If using your own computer to run the STAC API notebook, you will need a Python environment with the required packages. 
 Two different environment files are provided:
@@ -54,7 +56,7 @@ Two different environment files are provided:
     * [Install the environment](https://pixi.sh/dev/python/tutorial/#installation-pixi-install)
     * [Activate the environment](https://pixi.sh/dev/workspace/environment/#activation)
 
-You can also choose to manually install the following required packages using your package manager of choice:
+You can also choose to manually install the following required packages using your preferred python package manager:
 * ipykernel
 * odc-stac
 * pystac-client
@@ -63,3 +65,5 @@ You can also choose to manually install the following required packages using yo
 * botocore
 * matplotlib
 * scipy
+* geopandas
+* de_sar_demo (using `pip install .` from the repo directory)
