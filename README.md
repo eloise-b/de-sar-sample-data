@@ -23,9 +23,9 @@ This repository provides examples for how to load data in two ways:
 If you are not a Geoscience Australia employee, you will need to use the STAC API approach.
 
 We provide two options for documentation
-* [Rendered html pages](demo_html_pages/README.md), which can be viewed in a browser. 
+* [Rendered html pages](demo_html_pages), which can be viewed in a browser. 
 This shows you the outcome of each step required to load and transform the data.
-* [iPython notebooks](demo_notebooks/README.md), which can be run in an appropriate environment.
+* [iPython notebooks](demo_notebooks), which can be run in an appropriate environment.
 
 To view either file, you will first need to [clone the repository](#cloning-the-repository) to get a copy of the files.
 
