@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "de-sar-demo"
+requires-python = ">=3.8"
+authors = [
+    {name="Geoscience Australia", email="DigitalEarthAntarctica@ga.gov.au"},
+]
+description = "Geoscience Australia SAR Backscatter Demo"
+version = "0.0.1"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[project.urls]
+Homepage = "https://github.com/GeoscienceAustralia/sar-pipleine.git"
+
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
+
+[tool.pixi.pypi-dependencies]
+de-sar-demo = { path = ".", editable = true }
+
+[tool.pixi.dependencies]
+python = ">=3.13.3,<3.14"
+ipykernel = ">=6.29.5,<7"
+odc-stac = "*"
+pystac-client = ">=0.8.6,<0.9"
+numpy = ">=2.2.5,<3"
+folium = ">=0.19.5,<0.20"
+botocore = ">=1.38.15,<2"
+matplotlib = ">=3.10.3,<4"
+scipy = ">=1.15.2,<2"
+geopandas = ">=1.1.1,<2"
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+dev = { features = ["dev"], solve-group = "default" }
+
+[tool.pixi.tasks]
+export-conda = """
+pixi workspace export conda-environment -e default environment.yaml && \
+sed -ix "s/^name: default$/name: de-sar-sample-data/" environment.yaml; rm environment.yamlx
+"""
+
+[tool.pixi.feature.dev.dependencies]
+nbconvert = ">=7.16.6,<8"
+
+[tool.pixi.feature.dev.tasks]
+convert-notebooks-basic = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/01_product_info.ipynb --output-dir='demo_html_pages' --execute"
+convert-notebooks-stac = """
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/02_demonstration.ipynb --output-dir='demo_html_pages' --execute" && \
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/03_loading_with_stac.ipynb --output-dir='demo_html_pages' --execute" && \
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/05_transforming_data.ipynb --output-dir='demo_html_pages' --execute"
+"""
+convert-notebooks-datacube = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/04_loading_with_datacube.ipynb --output-dir='demo_html_pages' --execute"

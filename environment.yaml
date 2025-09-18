@@ -15,4 +15,4 @@ dependencies:
 - geopandas >=1.1.1,<2
 - pip
 - pip:
-  - rustac>=0.8.1, <0.9
+  - -e .
