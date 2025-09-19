@@ -52,8 +52,8 @@ nbconvert = ">=7.16.6,<8"
 [tool.pixi.feature.dev.tasks]
 convert-notebooks-basic = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/01_product_info.ipynb --output-dir='demo_html_pages' --execute"
 convert-notebooks-stac = """
-pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/02_demonstration.ipynb --output-dir='demo_html_pages' --execute" && \
-pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/03_loading_with_stac.ipynb --output-dir='demo_html_pages' --execute" && \
-pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/05_transforming_data.ipynb --output-dir='demo_html_pages' --execute"
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/02_demonstration.ipynb --output-dir='demo_html_pages' --execute && \
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/03_loading_with_stac.ipynb --output-dir='demo_html_pages' --execute && \
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/05_transforming_data.ipynb --output-dir='demo_html_pages' --execute
 """
 convert-notebooks-datacube = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/04_loading_with_datacube.ipynb --output-dir='demo_html_pages' --execute"
