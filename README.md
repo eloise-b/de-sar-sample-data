@@ -1,9 +1,9 @@
-# Accessing Geoscience Australia's Sentinel-1 IW Backscatter (collection 0)
+# Accessing the Digital Earth Normalised Radar Backscatter Product for Sentinel-1 from Geoscience Australia (Collection 0)
 
 This repository demonstrates how to use Python to access preliminary Sentinel-1 Interferometric Wide (IW) mode backscatter products developed by Geoscience Australia. 
 
 For Sentinel-1, Geoscience Australia's Digital Earth (DE) branch are currently offering a suite of experimental products that we are calling **collection 0**, with sample data available over parts of Australia and Antarctica.
-The product is a collaborative effort from Digital Earth Australia and Digital Earth Antarctica.
+The product is a collaborative effort from Digital Earth Australia and Digital Earth Antarctica, with support from CSIRO.
 
 ## Data availability
 
@@ -17,7 +17,7 @@ You can see the distribution of captured data over time and space in the DEA Dev
 ## Documentation
 
 This repository provides examples for how to load data in two ways:
-* Using DE's STAC API, which can be run on any computer.
+* Using DE's developmentSTAC API, which can be run on any computer.
 * Using DE's development Open Data Cube, which is only available in DE's Development or Production Sandbox environment. 
 
 If you are not a Geoscience Australia employee, you will need to use the STAC API approach.
@@ -57,13 +57,14 @@ Two different environment files are provided:
     * [Activate the environment](https://pixi.sh/dev/workspace/environment/#activation)
 
 You can also choose to manually install the following required packages using your preferred python package manager:
-* ipykernel
-* odc-stac
-* pystac-client
-* numpy
-* folium
-* botocore
-* matplotlib
-* scipy
-* geopandas
-* de_sar_demo (using `pip install .` from the repo directory)
+* botocore       1.40.35
+* folium         0.19.7
+* geopandas      1.1.1
+* ipykernel      6.30.1
+* matplotlib     3.10.6
+* numpy          2.3.3
+* odc-stac       0.4.0
+* pystac-client  0.8.6
+* python         3.13.7
+* scipy          1.16.2
+* de_sar_demo    0.0.1    (use `pip install .` from the repository directory)

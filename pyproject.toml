@@ -54,6 +54,6 @@ convert-notebooks-basic = "pixi run -e dev jupyter nbconvert --to HTML demo_note
 convert-notebooks-stac = """
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/02_demonstration.ipynb --output-dir='demo_html_pages' --execute && \
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/03_loading_with_stac.ipynb --output-dir='demo_html_pages' --execute && \
-pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/05_post_processing_data.ipynb --output-dir='demo_html_pages' --execute
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/05_post_processing.ipynb --output-dir='demo_html_pages' --execute
 """
 convert-notebooks-datacube = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/04_loading_with_datacube.ipynb --output-dir='demo_html_pages' --execute"
