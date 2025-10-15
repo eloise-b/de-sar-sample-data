@@ -3,7 +3,7 @@
 This repository demonstrates how to use Python to access preliminary Sentinel-1 Interferometric Wide (IW) mode backscatter products developed by Geoscience Australia. 
 
 For Sentinel-1, Geoscience Australia's Digital Earth (DE) branch are currently offering a suite of experimental products that we are calling **collection 0**, with sample data available over parts of Australia and Antarctica.
-The product is a collaborative effort from Digital Earth Australia and Digital Earth Antarctica, with support from CSIRO.
+The product is a collaborative effort from Digital Earth Australia and Digital Earth Antarctica, with support from the CSIRO.
 
 ## Data availability
 
@@ -17,7 +17,7 @@ You can see the distribution of captured data over time and space in the DEA Dev
 ## Documentation
 
 This repository provides examples for how to load data in two ways:
-* Using DE's developmentSTAC API, which can be run on any computer.
+* Using DE's development STAC API, which can be run on any computer.
 * Using DE's development Open Data Cube, which is only available in DE's Development or Production Sandbox environment. 
 
 If you are not a Geoscience Australia employee, you will need to use the STAC API approach.
