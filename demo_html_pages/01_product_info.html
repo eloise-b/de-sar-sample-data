@@ -7517,11 +7517,11 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Geoscience-Australia's-Sentinel-1-IW-Normalised-Radar-Backscatter-(collection-0)">Geoscience Australia's Sentinel-1 IW Normalised Radar Backscatter (collection 0)<a class="anchor-link" href="#Geoscience-Australia's-Sentinel-1-IW-Normalised-Radar-Backscatter-(collection-0)">¶</a></h1><p>Geoscience Australia's Digital Earth (DE) branch are currently offering a suite of experimental Sentinel-1 normalised radar backscatter (NRB) products that we are calling collection 0, with sample data available over Australia and Antarctica.</p>
+<h1 id="Digital-Earth-Normalised-Radar-Backscatter-Product-for-Sentinel-1-(Collection-0)">Digital Earth Normalised Radar Backscatter Product for Sentinel-1 (Collection 0)<a class="anchor-link" href="#Digital-Earth-Normalised-Radar-Backscatter-Product-for-Sentinel-1-(Collection-0)">¶</a></h1><p>Geoscience Australia's Digital Earth branch are currently offering a sample set of normalised radar backscatter (NRB) data for Sentinel-1 (labelled Collection 0) over Australia and Antarctica.</p>
 <p>The current offering contains data from <a href="https://sentiwiki.copernicus.eu/web/s1-products">Sentinel-1's Interferometric Wide swath (IW) product</a>.
 The data have been processed using a <a href="https://github.com/GeoscienceAustralia/RTC">fork</a> of NASA's <a href="https://www.earthdata.nasa.gov/data/projects/opera">OPERA</a> Synthetic Aperture Radar <a href="https://github.com/opera-adt/RTC">processing pipeline</a>.
-The data aim to meet the standards set out in the <a href="https://ceos.org/ard/files/PFS/SAR/v1.2/CEOS-ARD_PFS_Synthetic_Aperture_Radar_v1.2.pdf">CEOS-ARD Product Family Specification for Synthetic Aperture Radar</a>.</p>
-<p>The product is a collaborative effort from Digital Earth Australia and Digital Earth Antarctica.
+The data have been certified as analysis ready against the <a href="https://ceos.org/ard/files/PFS/SAR/v1.2/CEOS-ARD_PFS_Synthetic_Aperture_Radar_v1.2.pdf">CEOS-ARD Product Family Specification for Synthetic Aperture Radar</a>.</p>
+<p>The product is a collaborative effort from Digital Earth Australia and Digital Earth Antarctica, with support from CSIRO.
 If you have any questions, please reach out to the Digital Earth Antarctica team at digitalearthantarctica@ga.gov.au.</p>
 </div>
 </div>
@@ -7533,8 +7533,8 @@ If you have any questions, please reach out to the Digital Earth Antarctica team
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Data-availability">Data availability<a class="anchor-link" href="#Data-availability">¶</a></h2><p>Geoscience Australia's Sentinel-1 data is published across multiple products, one for each polarisation mode used to capture the data.
-You can see the distribution of captured data over time and space in the DEA Dev Explorer:</p>
+<h2 id="Data-availability">Data availability<a class="anchor-link" href="#Data-availability">¶</a></h2><p>Geoscience Australia's NRB data for Sentinel-1 IW mode is published across four products, one for each polarisation mode used to capture the data.
+You can see the distribution of the Collection 0 sample data over time and space in the DEA Dev Explorer:</p>
 <ul>
 <li><a href="https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_vv_vh_0">VV+VH distribution</a></li>
 <li><a href="https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_vv_0">VV distribution</a></li>
@@ -7555,9 +7555,9 @@ You can see the distribution of captured data over time and space in the DEA Dev
 This is shown in the Figure below, with each sub-swath labelled.
 The bursts are visible as rectangles within each sub-swath.</p>
 <p><img alt="A Sentinel-1 acquisition showing three sub-swaths made up of multiple bursts." src="https://sentiwiki.copernicus.eu/__attachments/1672913/IW_SLC_Product.jpg?inst-v=c9623a31-c9cf-47c0-be67-e455bd223601"/></p>
-<p>Bursts overlap almost perfectly between different passes and are always located at the same place, whereas scenes are not guarenteed to overlap.
-This makes them an ideal data unit for repeatable analysis over time.
-As such, GA's Sentinel-1 Normalised Radar Backscatter product is delivered as bursts, rather than acquisitions/scenes.</p>
+<p>Bursts overlap almost perfectly between different passes and are always located at the same place, whereas scenes are not guaranteed to overlap.
+This makes bursts an ideal data unit for repeatable analysis over time.
+As such, the Digital Earth Normalised Radar Backscatter product is delivered as bursts, rather than acquisitions/scenes.</p>
 </div>
 </div>
 </div>
@@ -7571,7 +7571,7 @@ As such, GA's Sentinel-1 Normalised Radar Backscatter product is delivered as bu
 <h2 id="Differences-between-Australia-and-Antarctica">Differences between Australia and Antarctica<a class="anchor-link" href="#Differences-between-Australia-and-Antarctica">¶</a></h2><p>Sentinel-1 does not capture all polarisation modes globally.
 Instead, horizontal-transmitted polarisation modes (HH and HV) are generally done over polar and ocean regions, and vertical-transmitted polarisation modes (VV and VH) are done everywhere else.
 Differences in polarisation are due to <a href="https://sentinels.copernicus.eu/documents/247904/3944045/Sentinel-1-Mode-Polarisation-Observation-Geometry-2019.jpeg">Sentinel-1's observation scenarios</a>.
-The table below captures the primary differences in the GA collection 0 offering:</p>
+The table below captures the primary differences in the Digital Earth Collection 0 offering:</p>
 <table>
 <thead>
 <tr>
@@ -7603,7 +7603,8 @@ The table below captures the primary differences in the GA collection 0 offering
 </tr>
 </tbody>
 </table>
-<p>In Australia, there are a small number of IW Horizontal and Vertical Single-Polarisation acquisitions over south-east Queensland, but neither are the primary capture mode, and the collection 0 product only contains some data for this region.</p>
+<p>In Australia, there are a small number of IW HH and VV acquisitions over south-east Queensland, but neither are the primary capture mode, and Collection 0 only contains some data for this region.
+In Antarctica, there are a small number of IW HH+HV and VV+VH acquisitions, but neither are the primary capture mode.</p>
 </div>
 </div>
 </div>
@@ -7658,17 +7659,17 @@ The table below provides a summary of available measurements and the products th
 <td>Linear Power</td>
 <td>NaN</td>
 <td>hh_gamma0</td>
-<td><code>ga_s1_nrb_iw_hh_0</code></td>
+<td><code>ga_s1_nrb_iw_hh_0</code>, <code>ga_s1_nrb_iw_hh_hv_0</code></td>
 <td>Co-polarised horizontal backscatter in gamma0 convention.</td>
 </tr>
 <tr>
 <td>HV_gamma0</td>
 <td>NRB</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>Not available</td>
+<td>float32</td>
+<td>Linear Power</td>
+<td>NaN</td>
+<td>hv_gamma0</td>
+<td><code>ga_s1_nrb_iw_hh_hv_0</code></td>
 <td>Cross-polarised horizontal backscatter in gamma0 convention.</td>
 </tr>
 <tr>
@@ -7804,6 +7805,29 @@ The table below provides a summary of several key pieces of metadata that may be
 <ul>
 <li><a href="https://raw.githubusercontent.com/GeoscienceAustralia/dea-config/refs/heads/s1-nrb-c0/product_metadata/eo3_s1_nrb.odc-type.yaml">Open Data Cube EO3 Metadata Document for Sentinel-1 NRB</a></li>
 <li><a href="https://deant-data-public-dev.s3.ap-southeast-2.amazonaws.com/persistent/CEOS-ARD/data/example_2/ga_s1_nrb_iw_vv_vh_0/t045_095837_iw1/2020/11/29/ga_s1a_nrb_0-1-0_T045-095837-IW1_20201129T192619Z_stac-item.json">Example STAC Document</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bf6e9e1f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Caveats-to-be-aware-of">Caveats to be aware of<a class="anchor-link" href="#Caveats-to-be-aware-of">¶</a></h2><p>The Collection 0 release has been designed to allow users to supply feedback on the product and its metadata.
+As such, there are a number of caveats/challenges to be aware of:</p>
+<ul>
+<li>Data is supplied through Digital Earth Australia's Development STAC API, which may experience outages. It should not be relied on for production applications.</li>
+<li>The current burst geometries extend beyond the valid data for each burst, meaning that queries will sometimes return areas of no-data. This will be addressed in the Collection 1 release.</li>
+<li>To give users ultimate flexibility, backscatter data is provided with minimal post-processing. As the user, you must apply the following post-processing steps as needed (detailed in the <a href="05_post_processing.ipynb">05_post_processing</a> notebook):<ul>
+<li>Masking areas of layover and shadow from backscatter data</li>
+<li>Applying speckle filtering (a function to apply a simple Lee filter is included in this demo)</li>
+<li>Converting from gamma0 backscatter convention to sigma0 or beta0 if desired</li>
+<li>Converting from linear power to decibels</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>

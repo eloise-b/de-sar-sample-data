@@ -6,6 +6,6 @@ This folder contains the following notebooks:
 * [02_demonstration.ipynb](02_demonstration.ipynb) - a simple demonstration of key steps involved in loading and preparing SAR backscatter data for analysis
 * [03_loading_with_stac.ipynb](03_loading_with_stac.ipynb) - more detailed information of how to work with the STAC API
 * [04_loading_with_datacube.ipynb](04_loading_with_datacube.ipynb) - more detailed information of how to work with the Datacube API
-* [05_transforming_data.ipynb](05_transforming_data.ipynb) - more detailed information about transformations such as masking, speckle filtering, and converting to different backscatter normalisation conventions.
+* [05_post_processing_data.ipynb](05_post_processing_data.ipynb) - more detailed information about transformations such as masking, speckle filtering, and converting to different backscatter normalisation conventions.
 
-The [demonstration notebook](02_demonstration.ipynb) and [transformations notebook](05_transforming_data.ipynb) can be configured to run either in a Geoscience Australia Sandbox environment (by setting `approach = "datacube"` in the first cell) or in a local compute environment (by setting `approach = "stac" in the first cell).
+The [demonstration notebook](02_demonstration.ipynb) and [transformations notebook](05_post_processing_data.ipynb) can be configured to run either in a Geoscience Australia Sandbox environment (by setting `approach = "datacube"` in the first cell) or in a local compute environment (by setting `approach = "stac" in the first cell).

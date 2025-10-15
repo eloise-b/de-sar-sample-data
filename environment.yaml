@@ -15,4 +15,4 @@ dependencies:
 - geopandas >=1.1.1,<2
 - pip
 - pip:
-  - -e .
+  - .

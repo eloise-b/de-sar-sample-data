@@ -2680,7 +2680,7 @@ packages:
 - pypi: ./
   name: de-sar-demo
   version: 0.0.1
-  sha256: 6643454c0f2b51bb439f166609865ceeb21bef5996d0f24d7fef628eb6b41115
+  sha256: ed2e73df81cfd063f953fdd204d7cb6d9cc43bf137d34951d0da83be45ee4e3e
   requires_python: '>=3.8'
   editable: true
 - conda: https://conda.anaconda.org/conda-forge/linux-64/debugpy-1.8.17-py313h5d5ffb9_0.conda
