@@ -67,4 +67,5 @@ You can also choose to manually install the following required packages using yo
 * pystac-client  0.8.6
 * python         3.13.7
 * scipy          1.16.2
+* scikit-image   0.25.2
 * de_sar_demo    0.0.1    (use `pip install .` from the repository directory)
