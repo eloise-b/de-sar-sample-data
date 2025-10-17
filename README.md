@@ -17,8 +17,8 @@ You can see the distribution of captured data over time and space in the DEA Dev
 ## Documentation
 
 This repository provides examples for how to load data in two ways:
-* Using DE's development STAC API, which can be run on any computer.
-* Using DE's development Open Data Cube, which is only available in DE's Development or Production Sandbox environment. 
+* Using DEA's development STAC API, which can be run on any computer.
+* Using DEA's development Open Data Cube, which is only available in DEA's Development or Production Sandbox environment. 
 
 If you are not a Geoscience Australia employee, you will need to use the STAC API approach.
 
@@ -41,11 +41,8 @@ git clone https://github.com/caitlinadams/de-sar-sample-data.git
 
 ### Setting up the environment
 
-If using DEA's Development or Production Sandbox, no environment set up is required.
-You will just need to pip install the `de_sar_demo` module to gain access to speckle filters.
-In a terminal, navigate to the repository and run `pip install .`.
-
-If using your own computer to run the STAC API notebook, you will need a Python environment with the required packages. 
+#### Own computer or cloud
+If using your own computer to load data from the STAC API, you will need a Python environment with the required packages. 
 Two different environment files are provided:
 * A Conda [environment.yaml](environment.yaml) file
     * [Install conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html#installing-conda)
@@ -69,3 +66,13 @@ You can also choose to manually install the following required packages using yo
 * scipy          1.16.2
 * scikit-image   0.25.2
 * de_sar_demo    0.0.1    (use `pip install .` from the repository directory)
+
+#### DEA Sandbox
+This is intended for employees internal to Geoscience Australia.
+For all other users, we recommend accessing data via the STAC API.
+
+If using DEA's Development or Production Sandbox, no environment set up is required.
+You will need to pip install the `de_sar_demo` module to gain access to utility functions for speckle filtering and mask dilation.
+In a terminal, navigate to the repository and run `pip install .`.
+If you are using the Production Sandbox, you will also need to connect to the Development ODC database.
+Please see internal Geoscience Australia documentation on how to do this.
