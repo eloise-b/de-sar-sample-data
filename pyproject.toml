@@ -15,9 +15,9 @@ version = "0.0.1"
 where = ["."]
 
 [project.urls]
-Homepage = "https://github.com/GeoscienceAustralia/sar-pipleine.git"
+Homepage = "https://github.com/caitlinadams/de-sar-sample-data.git"
 
-[tool.pixi.project]
+[tool.pixi.workspace]
 channels = ["conda-forge"]
 platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
 
@@ -36,6 +36,7 @@ matplotlib = ">=3.10.3,<4"
 scipy = ">=1.15.2,<2"
 geopandas = ">=1.1.1,<2"
 scikit-image = ">=0.25.2,<0.26"
+asf_search = ">=10.1.2,<11"
 
 [tool.pixi.environments]
 default = { solve-group = "default" }
@@ -54,7 +55,8 @@ nbconvert = ">=7.16.6,<8"
 convert-notebooks-basic = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/01_product_info.ipynb --output-dir='demo_html_pages' --execute"
 convert-notebooks-stac = """
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/02_demonstration.ipynb --output-dir='demo_html_pages' --execute && \
-pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/03_loading_with_stac.ipynb --output-dir='demo_html_pages' --execute && \
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/03a_loading_with_stac.ipynb --output-dir='demo_html_pages' --execute && \
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/03b_loading_known_scenes_with_stac.ipynb --output-dir='demo_html_pages' --execute && \
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/05_post_processing.ipynb --output-dir='demo_html_pages' --execute
 """
 convert-notebooks-datacube = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/04_loading_with_datacube.ipynb --output-dir='demo_html_pages' --execute"
