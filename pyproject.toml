@@ -10,6 +10,7 @@ authors = [
 ]
 description = "Geoscience Australia SAR Backscatter Demo"
 version = "0.0.1"
+dependencies = ["dea-tools>=0.4.1,<0.5"]
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -56,5 +57,6 @@ convert-notebooks-stac = """
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/02_demonstration.ipynb --output-dir='demo_html_pages' --execute && \
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/03_loading_with_stac.ipynb --output-dir='demo_html_pages' --execute && \
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/05_post_processing.ipynb --output-dir='demo_html_pages' --execute
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/06_sar_optical_timeseries_visualisation.ipynb --output-dir='demo_html_pages' --execute
 """
 convert-notebooks-datacube = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/04_loading_with_datacube.ipynb --output-dir='demo_html_pages' --execute"
