@@ -11,3 +11,7 @@ outputs
 
 # vs code
 .vscode
+
+# outputs
+demo_notebooks/*.gif
+demo_notebooks/*.png
