@@ -55,10 +55,13 @@ Two different environment files are provided:
 
 You can also choose to manually install the following required packages using your preferred python package manager:
 * botocore       1.40.35
+* dea_tools      0.4.7
 * folium         0.19.7
 * geopandas      1.1.1
 * ipykernel      6.30.1
+* ipywidgets     8.1.8
 * matplotlib     3.10.6
+* netcdf4        1.7.3
 * numpy          2.3.3
 * odc-stac       0.4.0
 * pystac-client  0.8.6
