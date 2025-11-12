@@ -10,6 +10,7 @@ authors = [
 ]
 description = "Geoscience Australia SAR Backscatter Demo"
 version = "0.0.1"
+dependencies = ["dea-tools>=0.4.7,<0.5"]
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -37,6 +38,8 @@ scipy = ">=1.15.2,<2"
 geopandas = ">=1.1.1,<2"
 scikit-image = ">=0.25.2,<0.26"
 asf_search = ">=10.1.2,<11"
+netcdf4 = ">=1.7.3,<2"
+ipywidgets = ">=8.1.8,<9"
 
 [tool.pixi.environments]
 default = { solve-group = "default" }
@@ -52,11 +55,11 @@ sed -ix "s/^name: default$/name: de-sar-sample-data/" environment.yaml; rm envir
 nbconvert = ">=7.16.6,<8"
 
 [tool.pixi.feature.dev.tasks]
-convert-notebooks-basic = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/01_product_info.ipynb --output-dir='demo_html_pages' --execute"
+convert-notebooks-basic = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/01_product_info.ipynb --output-dir='demo_html_pages/tutorial' --execute"
 convert-notebooks-stac = """
-pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/02_demonstration.ipynb --output-dir='demo_html_pages' --execute && \
-pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/03a_loading_with_stac.ipynb --output-dir='demo_html_pages' --execute && \
-pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/03b_loading_known_scenes_with_stac.ipynb --output-dir='demo_html_pages' --execute && \
-pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/05_post_processing.ipynb --output-dir='demo_html_pages' --execute
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/02_demonstration.ipynb --output-dir='demo_html_pages/tutorial' --execute && \
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/03_loading_with_stac.ipynb --output-dir='demo_html_pages/tutorial' --execute && \
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/05_post_processing.ipynb --output-dir='demo_html_pages/tutorial' --execute
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/extended_examples/visualisation_sar_optical_timeseries_animation.ipynb --output-dir='demo_html_pages/extended_examples' --execute
 """
-convert-notebooks-datacube = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/04_loading_with_datacube.ipynb --output-dir='demo_html_pages' --execute"
+convert-notebooks-datacube = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/04_loading_with_datacube.ipynb --output-dir='demo_html_pages/tutorial' --execute"
