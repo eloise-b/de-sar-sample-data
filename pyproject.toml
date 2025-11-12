@@ -16,7 +16,7 @@ dependencies = ["dea-tools>=0.4.7,<0.5"]
 where = ["."]
 
 [project.urls]
-Homepage = "https://github.com/GeoscienceAustralia/sar-pipleine.git"
+Homepage = "https://github.com/caitlinadams/de-sar-sample-data.git"
 
 [tool.pixi.workspace]
 channels = ["conda-forge"]
@@ -37,6 +37,7 @@ matplotlib = ">=3.10.3,<4"
 scipy = ">=1.15.2,<2"
 geopandas = ">=1.1.1,<2"
 scikit-image = ">=0.25.2,<0.26"
+asf_search = ">=10.1.2,<11"
 netcdf4 = ">=1.7.3,<2"
 ipywidgets = ">=8.1.8,<9"
 
@@ -59,6 +60,7 @@ convert-notebooks-stac = """
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/02_demonstration.ipynb --output-dir='demo_html_pages/tutorial' --execute && \
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/03_loading_with_stac.ipynb --output-dir='demo_html_pages/tutorial' --execute && \
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/05_post_processing.ipynb --output-dir='demo_html_pages/tutorial' --execute
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/extended_examples/dataloading_known_scenes.ipynb --output-dir='demo_html_pages/extended_examples' --execute
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/extended_examples/visualisation_sar_optical_timeseries_animation.ipynb --output-dir='demo_html_pages/extended_examples' --execute
 """
 convert-notebooks-datacube = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/04_loading_with_datacube.ipynb --output-dir='demo_html_pages/tutorial' --execute"
