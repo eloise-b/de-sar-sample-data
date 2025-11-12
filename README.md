@@ -54,17 +54,20 @@ Two different environment files are provided:
     * [Activate the environment](https://pixi.sh/dev/workspace/environment/#activation)
 
 You can also choose to manually install the following required packages using your preferred python package manager:
-* botocore       1.40.35
+* botocore       1.40.70
+* dea_tools      0.4.7
 * folium         0.19.7
 * geopandas      1.1.1
-* ipykernel      6.30.1
-* matplotlib     3.10.6
-* numpy          2.3.3
+* ipykernel      6.31.0
+* ipywidgets     8.1.8
+* matplotlib     3.10.7
+* netcdf4        1.7.3
+* numpy          2.3.4
 * odc-stac       0.4.0
 * pystac-client  0.8.6
-* python         3.13.7
-* scipy          1.16.2
+* python         3.13.9
 * scikit-image   0.25.2
+* scipy          1.16.3
 * de_sar_demo    0.0.1    (use `pip install .` from the repository directory)
 
 #### DEA Sandbox
