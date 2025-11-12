@@ -10,7 +10,7 @@ authors = [
 ]
 description = "Geoscience Australia SAR Backscatter Demo"
 version = "0.0.1"
-dependencies = ["dea-tools>=0.4.1,<0.5"]
+dependencies = ["dea-tools>=0.4.7,<0.5"]
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -18,7 +18,7 @@ where = ["."]
 [project.urls]
 Homepage = "https://github.com/GeoscienceAustralia/sar-pipleine.git"
 
-[tool.pixi.project]
+[tool.pixi.workspace]
 channels = ["conda-forge"]
 platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
 
@@ -57,6 +57,6 @@ convert-notebooks-stac = """
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/02_demonstration.ipynb --output-dir='demo_html_pages/tutorial' --execute && \
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/03_loading_with_stac.ipynb --output-dir='demo_html_pages/tutorial' --execute && \
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/05_post_processing.ipynb --output-dir='demo_html_pages/tutorial' --execute
-pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/extra_examples/01_sar_optical_timeseries_visualisation.ipynb --output-dir='demo_html_pages/extra_examples' --execute
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/extended_examples/visualisation_sar_optical_timeseries_animation.ipynb --output-dir='demo_html_pages/extended_examples' --execute
 """
 convert-notebooks-datacube = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/04_loading_with_datacube.ipynb --output-dir='demo_html_pages/tutorial' --execute"
