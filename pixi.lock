@@ -3668,7 +3668,7 @@ packages:
 - pypi: ./
   name: de-sar-demo
   version: 0.0.1
-  sha256: 4e29b7b8858971c3609cdc1d3e5351c4ce5ca9f44d13b403de1841f7067d4036
+  sha256: 20debb32e6fdbaa505050fb074a14182d6e6ef7d0e8842ed532992e3d385086a
   requires_dist:
   - dea-tools>=0.4.1,<0.5
   requires_python: '>=3.8'
