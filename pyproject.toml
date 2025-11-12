@@ -60,6 +60,7 @@ convert-notebooks-stac = """
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/02_demonstration.ipynb --output-dir='demo_html_pages/tutorial' --execute && \
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/03_loading_with_stac.ipynb --output-dir='demo_html_pages/tutorial' --execute && \
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/05_post_processing.ipynb --output-dir='demo_html_pages/tutorial' --execute
+pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/extended_examples/dataloading_known_scenes.ipynb --output-dir='demo_html_pages/extended_examples' --execute
 pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/extended_examples/visualisation_sar_optical_timeseries_animation.ipynb --output-dir='demo_html_pages/extended_examples' --execute
 """
 convert-notebooks-datacube = "pixi run -e dev jupyter nbconvert --to HTML demo_notebooks/tutorial/04_loading_with_datacube.ipynb --output-dir='demo_html_pages/tutorial' --execute"
