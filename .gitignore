@@ -13,5 +13,6 @@ outputs
 .vscode
 
 # outputs
-demo_notebooks/*.gif
-demo_notebooks/*.png
+demo_notebooks/*/*.gif
+demo_notebooks/*/*.png
+demo_notebooks/*/*.tif

@@ -1,11 +1,6 @@
 # Demo Notebooks
 
-This folder contains the following notebooks:
+These notebooks are designed to help you work with the Collection 0 Digital Earth Normalised Radar Backscatter product for Sentinel-1 from Geoscience Australia. There are two folders:
 
-* [01_product_info.ipynb](01_product_info.ipynb) - high-level information about the product, including data availability and metadata
-* [02_demonstration.ipynb](02_demonstration.ipynb) - a simple demonstration of key steps involved in loading and preparing SAR backscatter data for analysis
-* [03_loading_with_stac.ipynb](03_loading_with_stac.ipynb) - more detailed information of how to work with the STAC API
-* [04_loading_with_datacube.ipynb](04_loading_with_datacube.ipynb) - more detailed information of how to work with the Datacube API
-* [05_post_processing_data.ipynb](05_post_processing_data.ipynb) - more detailed information about transformations such as masking, speckle filtering, and converting to different backscatter normalisation conventions.
-
-The [demonstration notebook](02_demonstration.ipynb) and [transformations notebook](05_post_processing_data.ipynb) can be configured to run either in a Geoscience Australia Sandbox environment (by setting `approach = "datacube"` in the first cell) or in a local compute environment (by setting `approach = "stac" in the first cell).
+* [tutorial](tutorial) - this folder contains a series of numbered notebooks that take you through product information, how to load data, and how to post-process the data for analysis.
+* [extended_examples](extended_examples) - this folder contains additional notebooks that demonstrate how to do extended visualisation tasks, more complex data loading, or analysis.
