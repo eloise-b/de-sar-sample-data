@@ -29,6 +29,9 @@ This shows you the outcome of each step required to load and transform the data.
 
 To view either file, you will first need to [clone the repository](#cloning-the-repository) to get a copy of the files.
 
+We also have a collection of recorded videos that provide an overview of each iPython notebook. 
+If you wish to view these videos, please contact DigitalEarthAntarctic@ga.gov.au to request access.
+
 ## Set up
 
 ### Cloning the repository
