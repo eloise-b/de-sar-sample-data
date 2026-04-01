@@ -10,7 +10,8 @@
             "extensions": [
                 "ms-python.python",
                 "charliermarsh.ruff",
-                "GitHub.copilot"
+                "GitHub.copilot",
+                "ms-toolsai.jupyter"
             ]
         }
     },
