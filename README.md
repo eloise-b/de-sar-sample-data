@@ -2,17 +2,17 @@
 
 This repository demonstrates how to use Python to access preliminary Sentinel-1 Interferometric Wide (IW) mode backscatter products developed by Geoscience Australia. 
 
-For Sentinel-1, Geoscience Australia's Digital Earth (DE) branch are currently offering a suite of experimental products that we are calling **collection 0**, with sample data available over parts of Australia and Antarctica.
+For Sentinel-1, Geoscience Australia's Digital Earth (DE) branch are currently offering a suite of experimental products that we are calling **collection 1**, with sample data available over parts of Australia and Antarctica.
 The product is a collaborative effort from Digital Earth Australia and Digital Earth Antarctica, with support from the CSIRO.
 
 ## Data availability
 
 Geoscience Australia's Sentinel-1 data is published across multiple products, one for each polarisation mode used to capture the data.
 You can see the distribution of captured data over time and space in the DEA Dev Explorer:
-* [VV+VH distribution](https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_vv_vh_0)
-* [VV distribution](https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_vv_0)
-* [HH distribution](https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_hh_0)
-* [HH+HV distribution](https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_hh_hv_0)
+* [VV+VH distribution](https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_vv_vh_1)
+* [VV distribution](https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_vv_1)
+* [HH distribution](https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_hh_1)
+* [HH+HV distribution](https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_hh_hv_1)
 
 ## Documentation
 
