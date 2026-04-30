@@ -21,7 +21,7 @@ You can see the distribution of captured data for Collection 0 over time and spa
 ### Collection 1
 You can see the distribution of captured data for Collection 1 over time and space in the DEA Dev Explorer:
 * [Collection 1 VV+VH distribution](https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_vv_vh_1)
-* [VV distribution](https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_vv_1)
+* [Collection 1 VV distribution](https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_vv_1)
 * [HH distribution](https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_hh_1)
 * [HH+HV distribution](https://explorer.dev.dea.ga.gov.au/products/ga_s1_nrb_iw_hh_hv_1)
 
