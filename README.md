@@ -9,7 +9,7 @@ The product is a collaborative effort from Digital Earth Australia and Digital E
 
 Geoscience Australia's Sentinel-1 data is published across multiple products, one for each polarisation mode used to capture the data.
 
-At this stage, we have Collection 0 and Collection 1. The main difference is that Collection 1 is a more advanced and more representative product for what will be produced going forward, but at this stage Collection 0 has further coverage. The main differences you'll see are in the coverage and in the layer names.
+There are two collections available: Collection 0 and Collection 1. We recommend using Collection 1 as it is closer to the format we will use for final data release. If Collection 1 does not have sufficient coverage to meet your test case, we recommend looking at Collection 0, which has wider area coverage and deeper timeseries data.
 
 ### Collection 0
 You can see the distribution of captured data for Collection 0 over time and space in the DEA Dev Explorer:
