@@ -12,6 +12,9 @@ outputs
 # vs code
 .vscode
 
+# macOS
+.DS_Store
+
 # outputs
 demo_notebooks/*/*.gif
 demo_notebooks/*/*.png
