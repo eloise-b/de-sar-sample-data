@@ -23,7 +23,7 @@ def _backscatter_bands(ds: xr.Dataset) -> dict[str, xr.DataArray]:
     """Return the backscatter bands of a dataset, keyed by lowercase polarisation."""
     bands = {}
     for name in ds.data_vars:
-        match = re.fullmatch(r"(hh|hv|vv|vh)_(gamma0|sigma0_ellipsoid)", str(name).lower())
+        match = re.fullmatch(r"(hh|hv|vv|vh)_(gamma0|sigma0_ellipsoid|sigma0_dem|beta0)", str(name).lower())
         if match:
             if match.group(1) in bands:
                 raise ValueError(
