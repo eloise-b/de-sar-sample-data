@@ -1,8 +1,9 @@
 from dataclasses import dataclass
-from typing import Literal, Optional
+from typing import Optional
 
 from odc.geo import BoundingBox
 
+from de_sar_demo.sar_utils import Convention
 from de_sar_demo.visualisation import Percentiles, Scale
 
 
@@ -32,8 +33,9 @@ class Location:
     mask_layover_shadow : bool
         Whether to remove pixels affected by layover and shadow. Turn this off for steep terrain
         where it would leave large holes in the image, by default False
-    backscatter : Literal["gamma0", "sigma0_ellipsoid", "sigma0_dem", "beta0"]
-        The backscatter convention to display. Ellipsoid sigma0 removes the DEM-based brightness
+    convention : Convention
+        The backscatter convention to display: "gamma0", "sigma0_ellipsoid", "sigma0_dem" or "beta0".
+        See docs/backscatter_conventions.md. Ellipsoid sigma0 removes the DEM-based brightness
         correction in gamma0, which can help where DEM errors show in the image. DEM sigma0 is
         relative to the ground including terrain, using the `oa_gamma0_to_sigma0_ratio` layer.
         Beta0 is relative to the radar slant range, using the `oa_gamma0_to_beta0_ratio` layer,
@@ -54,7 +56,7 @@ class Location:
     resolution: int
     percentiles: Optional[Percentiles] = None
     mask_layover_shadow: bool = False
-    backscatter: Literal["gamma0", "sigma0_ellipsoid", "sigma0_dem", "beta0"] = "gamma0"
+    convention: Convention = "gamma0"
     display_scale: Optional[Scale] = None
     speckle_filter: bool = True
 
@@ -73,7 +75,7 @@ LOCATIONS = {
             start_date="2025-01-01",
             end_date="2025-02-01",
             resolution=60,
-            backscatter="sigma0_ellipsoid",
+            convention="sigma0_ellipsoid",
         ),
         Location(
             name="pine_island_glacier_front_zoom",
@@ -86,7 +88,7 @@ LOCATIONS = {
             start_date="2025-01-01",
             end_date="2025-01-10",
             resolution=20,
-            backscatter="sigma0_ellipsoid",
+            convention="sigma0_ellipsoid",
         ),
         Location(
             name="pine_island_glacier_front_zoom_zoom",
@@ -99,7 +101,7 @@ LOCATIONS = {
             start_date="2025-01-01",
             end_date="2025-01-10",
             resolution=20,
-            backscatter="sigma0_ellipsoid",
+            convention="sigma0_ellipsoid",
         ),
         Location(
             name="amery_ice_shelf_front",
@@ -112,7 +114,7 @@ LOCATIONS = {
             start_date="2025-01-01",
             end_date="2025-02-01",
             resolution=20,
-            backscatter="sigma0_ellipsoid",
+            convention="sigma0_ellipsoid",
         ),
         Location(
             name="casey_station_vanderford_glacier",

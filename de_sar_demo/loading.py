@@ -3,11 +3,19 @@ from odc.geo import BoundingBox
 import odc.geo.xr
 from odc.stac import load
 from pystac_client import Client
+from de_sar_demo.sar_utils import (
+    REQUIRED_LAYERS,
+    Convention,
+    _check_convention,
+    _gamma0_bands,
+    convert_backscatter,
+)
 from de_sar_demo.speckle_filters import lee_filter_xr
 import numpy as np
 import xarray
 from pathlib import Path
-from typing import Literal, Optional
+from typing import Literal, Optional, Sequence
+import warnings
 from dataclasses import dataclass
 
 
@@ -247,3 +255,76 @@ def find_and_load_single_scene_from_stac(
         for band, file in band_files:
             print(f"    Writing to file: {file}")
             ds[band].odc.write_cog(file, overwrite=True)
+
+
+ANTARCTIC_WARNING = (
+    "Data south of 60°S is loaded as gamma0, which can show DEM artifacts over fast-changing "
+    "areas such as ice shelves. Consider convention=\"sigma0_ellipsoid\" instead. To compare, see "
+    "demo_notebooks/extended_examples/visualisation_compare_backscatter_conventions.ipynb."
+)
+
+
+def _is_antarctic(items) -> bool:
+    """Whether every item lies entirely south of 60°S."""
+    bboxes = [item.bbox for item in items if getattr(item, "bbox", None)]
+    return bool(bboxes) and all(bbox[3] < -60 for bbox in bboxes)
+
+
+def load_nrb(
+    items,
+    convention: Convention = "gamma0",
+    bands: Optional[Sequence[str]] = None,
+    **load_kwargs,
+) -> xarray.Dataset:
+    """Load NRB items with `odc.stac.load`, in the requested backscatter convention.
+
+    A drop-in replacement for `odc.stac.load` after a STAC search: the conversion layers the
+    convention needs are added to the load, the gamma0 bands are converted, and the conversion
+    layers are dropped unless you asked for them in `bands`.
+
+    Parameters
+    ----------
+    items : iterable of pystac.Item
+        The items from a STAC search, e.g. `stac_client.search(...).item_collection()`
+    convention : Convention, optional
+        One of "gamma0", "sigma0_dem", "sigma0_ellipsoid" or "beta0", by default "gamma0".
+        Over Antarctica, "sigma0_ellipsoid" avoids artifacts from errors in the DEM
+    bands : Optional[Sequence[str]], optional
+        The bands to load, e.g. `["hh_gamma0", "oa_layover_shadow_mask"]`. By default, all the
+        gamma0 bands of the first item. Gamma0 bands are returned in the requested convention
+    **load_kwargs
+        Passed to `odc.stac.load`, e.g. `crs`, `resolution`, `groupby`, `chunks`, `geopolygon`
+
+    Returns
+    -------
+    xarray.Dataset
+        The loaded data, with `<polarisation>_<convention>` bands in linear scale
+
+    Raises
+    ------
+    ValueError
+        there are no items, the convention is unknown, or no gamma0 bands were requested
+
+    Notes
+    -----
+    When `groupby` combines items, odc-stac fuses each band separately before the conversion.
+    The conversion layers share gamma0's footprint, so this matches converting each item first.
+    """
+    _check_convention(convention)
+    items = list(items)
+    if not items:
+        raise ValueError("No items to load. Check the STAC search.")
+
+    if bands is None:
+        bands = _gamma0_bands(items[0].assets)
+    bands = list(bands)
+    if not _gamma0_bands(bands):
+        raise ValueError(f"No <polarisation>_gamma0 bands requested. Bands: {bands}")
+
+    if convention == "gamma0" and _is_antarctic(items):
+        warnings.warn(ANTARCTIC_WARNING, UserWarning, stacklevel=2)
+
+    extra_layers = [name for name in REQUIRED_LAYERS[convention] if name not in bands]
+    ds = load(items, bands=bands + extra_layers, **load_kwargs)
+    converted = convert_backscatter(ds, convention, drop_layers=False)
+    return converted.drop_vars(extra_layers)

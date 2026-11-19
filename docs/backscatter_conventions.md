@@ -21,7 +21,17 @@ NRB is delivered as gamma0. The others are calculated with the conversion layers
 - `sigma0_ellipsoid = gamma0 × oa_gamma0_to_beta0_ratio × sin(oa_incidence_angle)`
 - `beta0 = gamma0 × oa_gamma0_to_beta0_ratio`
 
-Or use `load_nrb(items, convention="sigma0_ellipsoid")` from `de_sar_demo.conventions`.
+Or use `load_nrb(items, convention="sigma0_ellipsoid")` from `de_sar_demo.loading`, or `convert_backscatter(ds, "sigma0_ellipsoid")` from `de_sar_demo.sar_utils` for data that's already loaded.
+
+### Processing order
+
+Apply the steps in this order, keeping the data linear until the last step:
+
+1. **Convert** to the convention you want, while the data is unfiltered.
+2. **Mask** layover and shadow, so affected pixels don't spread into their neighbours when filtering.
+3. **Speckle filter** in linear scale. The filters assume the noise statistics of linear data.
+4. **Composite** over time in linear scale. Averaging dB values biases the result towards low backscatter.
+5. **Convert to dB** last, if you need it.
 
 ## Which one to use
 
