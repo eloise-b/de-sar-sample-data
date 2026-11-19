@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 import re
-from typing import Callable, Mapping, Optional, Union
+from typing import Callable, Literal, Mapping, Optional, Union
 
 import matplotlib.pyplot as plt
 from matplotlib.colors import Colormap, LinearSegmentedColormap
@@ -10,6 +10,7 @@ import xarray as xr
 
 from de_sar_demo.sar_utils import convert_linear_to_db_xr
 
+Scale = Literal["db", "linear"]
 PercentilePair = tuple[float, float]
 Percentiles = Union[PercentilePair, Mapping[str, PercentilePair]]
 
@@ -118,6 +119,9 @@ class Style:
         The colour map for styles with a single "value" channel, by default None
     uses_time : bool
         Whether the style uses the time dimension, rather than a single image, by default False
+    scale : Scale
+        Whether the channels and display ranges are in decibels ("db") or linear scale ("linear"),
+        by default "db"
     """
 
     title: str
@@ -125,6 +129,7 @@ class Style:
     scale_ranges: Mapping[str, tuple[float, float]]
     cmap: Optional[Colormap] = None
     uses_time: bool = False
+    scale: Scale = "db"
 
 
 STYLES = {
@@ -148,6 +153,7 @@ STYLES = {
             "green": (0.00096179, 0.06779868),
             "blue": (0.01472214, 4.3769968),
         },
+        scale="linear",
     ),
     "dual_pol_db": Style(
         title="Dual-pol composite: co-pol, cross-pol, co-pol minus cross-pol (dB)",
@@ -218,6 +224,24 @@ def _percentiles_by_channel(
     return by_channel
 
 
+def _convert_scale(values: xr.DataArray, from_scale: Scale, to_scale: Scale) -> xr.DataArray:
+    """Convert channel values between decibels and linear scale."""
+    if from_scale == to_scale:
+        return values
+    if to_scale == "linear":
+        return 10 ** (values / 10)
+    return convert_linear_to_db_xr(values)
+
+
+def _convert_range(scale_range: tuple[float, float], from_scale: Scale, to_scale: Scale) -> tuple[float, float]:
+    """Convert a (low, high) display range between decibels and linear scale."""
+    if from_scale == to_scale:
+        return scale_range
+    if to_scale == "linear":
+        return tuple(float(10 ** (value / 10)) for value in scale_range)
+    return tuple(float(10 * np.log10(max(value, 1e-10))) for value in scale_range)
+
+
 def _rescale(values: np.ndarray, low: float, high: float) -> np.ndarray:
     """Linearly rescale values from the range (low, high) to (0, 1), clipping values outside the range."""
     if high <= low:
@@ -229,6 +253,7 @@ def apply_style(
     ds: xr.Dataset,
     style: str,
     percentiles: Optional[Percentiles] = None,
+    scale: Optional[Scale] = None,
 ) -> xr.DataArray:
     """Apply a named style to linear backscatter bands, producing an RGBA image.
 
@@ -247,22 +272,32 @@ def apply_style(
         Use a pair such as `(2, 98)` for all channels, or a dictionary such as `{"red": (2, 98)}`
         to set individual channels, leaving other channels on their fixed range. By default None.
         Note that percentile ranges differ between images, so colours are not comparable between them.
+    scale : Optional[Scale], optional
+        Display the channels in decibels ("db") or linear scale ("linear"). By default None, which uses
+        the style's own scale (linear for `vv_vh_false_colour_linear`, dB for the others). The style's
+        fixed display ranges are converted to match, and percentiles are calculated on the converted values.
+        Linear scale shows bright targets with more contrast, but most of a typical image looks dark.
 
     Returns
     -------
     xr.DataArray
         An RGBA image with dimensions `y`, `x` and `band`, and values between 0 and 1. Pixels with
-        missing data are transparent. The display ranges used are stored in `attrs["scale_ranges"]`.
+        missing data are transparent. The display ranges used are stored in `attrs["scale_ranges"]`,
+        and the scale in `attrs["scale"]`.
 
     Raises
     ------
     ValueError
-        the style is unknown, the bands or dimensions don't suit the style, or the percentiles are invalid or
-        are requested for an image with no valid pixels
+        the style or scale is unknown, the bands or dimensions don't suit the style, or the percentiles are
+        invalid or are requested for an image with no valid pixels
     """
     if style not in STYLES:
         raise ValueError(f"Unknown style '{style}'. Choose from: {list(STYLES)}")
     selected_style = STYLES[style]
+    if scale is None:
+        scale = selected_style.scale
+    if scale not in ("db", "linear"):
+        raise ValueError(f"scale must be 'db', 'linear' or None, got: {scale!r}")
 
     # Compute the bands once up front, so lazy data isn't reloaded for each channel
     ds = xr.Dataset({band.name: band for band in _backscatter_bands(ds).values()}).compute()
@@ -276,7 +311,8 @@ def apply_style(
 
     channels = selected_style.channels(ds)
     channels = {
-        channel: values.transpose("y", "x") for channel, values in channels.items()
+        channel: _convert_scale(values, selected_style.scale, scale).transpose("y", "x")
+        for channel, values in channels.items()
     }
     percentiles_by_channel = _percentiles_by_channel(percentiles, channels)
 
@@ -295,7 +331,7 @@ def apply_style(
                 values.values[is_valid], percentiles_by_channel[channel]
             )
         else:
-            low, high = selected_style.scale_ranges[channel]
+            low, high = _convert_range(selected_style.scale_ranges[channel], selected_style.scale, scale)
         scale_ranges[channel] = (float(low), float(high))
         scaled[channel] = np.nan_to_num(_rescale(values.values, low, high), nan=0.0)
 
@@ -316,7 +352,7 @@ def apply_style(
         rgba,
         dims=("y", "x", "band"),
         coords={**template.coords, "band": ["red", "green", "blue", "alpha"]},
-        attrs={"style": style, "scale_ranges": scale_ranges},
+        attrs={"style": style, "scale": scale, "scale_ranges": scale_ranges},
     )
 
 
