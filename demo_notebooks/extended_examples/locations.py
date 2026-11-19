@@ -3,7 +3,7 @@ from typing import Literal, Optional
 
 from odc.geo import BoundingBox
 
-from de_sar_demo.visualisation import Percentiles
+from de_sar_demo.visualisation import Percentiles, Scale
 
 
 @dataclass(frozen=True)
@@ -38,6 +38,11 @@ class Location:
         relative to the ground including terrain, using the `oa_gamma0_to_sigma0_ratio` layer.
         Beta0 is relative to the radar slant range, using the `oa_gamma0_to_beta0_ratio` layer,
         by default "gamma0"
+    display_scale : Optional[Scale]
+        Display the image in decibels ("db") or linear scale ("linear"). By default None, which uses the
+        style's own scale (linear for VV+VH false colour, dB for the others)
+    speckle_filter : bool
+        Whether to apply the Lee speckle filter before compositing, by default True
     """
 
     name: str
@@ -50,6 +55,8 @@ class Location:
     percentiles: Optional[Percentiles] = None
     mask_layover_shadow: bool = False
     backscatter: Literal["gamma0", "sigma0_ellipsoid", "sigma0_dem", "beta0"] = "gamma0"
+    display_scale: Optional[Scale] = None
+    speckle_filter: bool = True
 
 
 LOCATIONS = {
@@ -88,7 +95,7 @@ LOCATIONS = {
                 "Rows of crevasses cross the floating ice, which breaks off along a jagged front into the dark ocean."
             ),
             collection="ga_s1_nrb_iw_hh_1",
-            aoi=BoundingBox(left=-101.5, bottom=-75.1, right=-100.1, top=-74.9, crs="EPSG:4326"),
+            aoi=BoundingBox(left=-101.5, bottom=-75.02, right=-100.5, top=-74.9, crs="EPSG:4326"),
             start_date="2025-01-01",
             end_date="2025-01-10",
             resolution=20,
