@@ -77,6 +77,32 @@ LOCATIONS = {
             collection="ga_s1_nrb_iw_hh_1",
             aoi=BoundingBox(left=-102.5, bottom=-75.3, right=-100.0, top=-74.8, crs="EPSG:4326"),
             start_date="2025-01-01",
+            end_date="2025-01-10",
+            resolution=20,
+            backscatter="sigma0_ellipsoid",
+        ),
+        Location(
+            name="pine_island_glacier_front_zoom_zoom",
+            description=(
+                "A close-up of the Pine Island Glacier calving front, West Antarctica, in January 2025, from Geoscience Australia's Sentinel-1 radar backscatter (HH ellipsoid sigma0, contains modified Copernicus Sentinel data 2025). "
+                "Rows of crevasses cross the floating ice, which breaks off along a jagged front into the dark ocean."
+            ),
+            collection="ga_s1_nrb_iw_hh_1",
+            aoi=BoundingBox(left=-101.5, bottom=-75.1, right=-100.1, top=-74.9, crs="EPSG:4326"),
+            start_date="2025-01-01",
+            end_date="2025-01-10",
+            resolution=20,
+            backscatter="sigma0_ellipsoid",
+        ),
+        Location(
+            name="amery_ice_shelf_front",
+            description=(
+                "The Amery Ice Shelf near its front, East Antarctica, in January 2025, from Geoscience Australia's Sentinel-1 radar backscatter (HH ellipsoid sigma0, contains modified Copernicus Sentinel data 2025). "
+                "Faint flow lines cross the smooth floating ice shelf, which ends at the calving front in one corner, with broken sea ice in Prydz Bay beyond."
+            ),
+            collection="ga_s1_nrb_iw_hh_1",
+            aoi=BoundingBox(left=73.55, bottom=-69.09, right=74.25, top=-68.89, crs="EPSG:4326"),
+            start_date="2025-01-01",
             end_date="2025-02-01",
             resolution=20,
             backscatter="sigma0_ellipsoid",
