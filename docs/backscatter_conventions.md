@@ -33,6 +33,17 @@ Apply the steps in this order, keeping the data linear until the last step:
 4. **Composite** over time in linear scale. Averaging dB values biases the result towards low backscatter.
 5. **Convert to dB** last, if you need it.
 
+### Grouping safely
+
+The conversion layers depend on the viewing geometry of each pass, so each backscatter pixel must be converted with the layers from the same pass.
+
+| Convention | Safe grouping when loading | Compositing |
+| --- | --- | --- |
+| gamma0 | Any, including `solar_day` | Can be averaged across passes and orbits, as terrain and angle effects are largely removed |
+| sigma0 DEM, sigma0 ellipsoid, beta0 | One pass per group: `sat:absolute_orbit` or `sarard:scene_id` | Convert first, then average. For consistent values, only average passes from the same relative orbit (`sat:relative_orbit`), as the values change with incidence angle |
+
+Avoid `groupby="solar_day"` before converting. Where passes overlap on the same day, such as ascending and descending passes over Antarctica, the backscatter and conversion layers are merged separately and can come from different passes, which gives wrong values in the overlap.
+
 ## Which one to use
 
 - **Most uses (land, change over time):** gamma0.
